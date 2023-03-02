@@ -5,31 +5,39 @@
     --color4: #92c7a3;
     --color5: #dfece6;
 }
- * {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
 
 html,
-body {width: 100%};
+body {
+    width: 100%
+}
+
+;
+
 body {
     background-color: var(--color5);
-    
+
 }
 
 .nota-card h3 {
     color: var(--color5);
     word-break: break-all;
 }
+
 .nota-card p {
     color: #92c7a3;
     word-break: break-all;
 }
 
 .nota-card {
+    margin-left: 300px;
+    justify-content: center;
     max-width: 100%;
-    margin: auto;
     flex-direction: column;
     display: flex;
     background-color: var(--color2);
@@ -38,12 +46,15 @@ body {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.2s ease-in-out;
 }
+
 /* Adicionei algumas classes para estilizar a imagem */
+
 .nota-card img {
     margin: auto;
     max-width: 80%;
     justify-content: center;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .nota-card:hover {
@@ -90,11 +101,7 @@ form button {
 }
 
 
-.form-control-file {
- font-size: 1rem;
- border-radius: 5px;
- background-color: #92c7a3;
-}
+
 .color1 {
     color: var(--color5);
 }
