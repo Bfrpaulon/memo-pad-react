@@ -90,7 +90,11 @@ form button {
 }
 
 
-
+.form-control-file {
+ font-size: 1rem;
+ border-radius: 5px;
+ background-color: #92c7a3;
+}
 .color1 {
     color: var(--color5);
 }
