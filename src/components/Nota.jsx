@@ -40,7 +40,7 @@ function Nota() {
   }
 
   return (
-    <div className="container-fluid bg-color5 py-5">
+    <div className="container container-fluid bg-color5 py-5">
       <div className="row justify-content-center">
         <div className="col-md-6 col-lg-4">
           <form onSubmit={handleSubmit} className="nota-form p-4">
@@ -98,7 +98,7 @@ function Nota() {
           </form>
           <div className="nota-list">
             {notas.map((nota, index) => (
-              <div key={index} className="nota-card p-4 mb-4">
+              <div key={index} className="nota-card p-4 mb-4 ml-5">
                 {nota.editando ? (
                   <div>
                     <div className="form-group">
