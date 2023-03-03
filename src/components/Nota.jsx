@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Nota.css';
 import { FaTrashAlt, FaEdit, FaSave } from 'react-icons/fa';
+import Header from './components/Header';
 
 function Nota() {
   const [titulo, setTitulo] = useState('');
@@ -40,72 +41,74 @@ function Nota() {
   }
 
   return (
-    <div className="container container-fluid bg-color5 py-5">
-      <div className="row justify-content-center">
-        <div className="col-md-6 col-lg-4">
-          <form onSubmit={handleSubmit} className="nota-form p-4">
-            <h2 className="text-center">Criar Nota</h2>
-            <div className="form-group">
+    <div class="container">
+      <Header />
+      <div class="row">
+        <div class="w-2/6">
+          <form className='w-80' onSubmit={handleSubmit}>
+            <h2>Criar Nota</h2>
+            <div class="form-group">
               <label htmlFor="titulo">Título</label>
               <input
                 type="text"
-                className="form-control"
+                class="form-control form-control-lg"
                 id="titulo"
                 value={titulo}
                 onChange={(event) => setTitulo(event.target.value)}
               />
             </div>
-            <div className="form-group">
+            <div class="form-group">
               <label htmlFor="descricao">Descrição</label>
               <textarea
-                className="form-control"
+                class="form-control form-control-lg"
                 id="descricao"
                 rows="3"
                 value={descricao}
                 onChange={(event) => setDescricao(event.target.value)}
               ></textarea>
             </div>
-            <div className="form-group">
+            <div class="form-group">
               <label htmlFor="imagem">Imagem</label>
               <input
                 type="file"
-                className="form-control-file"
                 id="imagem"
                 onChange={(event) => setImagem(event.target.files[0])}
               />
             </div>
-            <div className="form-group">
+            <div class="form-group">
               <label htmlFor="audio">Áudio</label>
               <input
                 type="file"
-                className="form-control-file"
+                class="form-control-file form-control-sm"
                 id="audio"
                 onChange={(event) => setAudio(event.target.files[0])}
               />
             </div>
-            <div className="form-group">
+            <div class="form-group">
               <label htmlFor="video">Vídeo</label>
               <input
                 type="file"
-                className="form-control-file"
                 id="video"
                 onChange={(event) => setVideo(event.target.files[0])}
               />
             </div>
             <button type="submit" className="btn btn-primary">
-              Salvar
+              <FaSave /> Salvar
             </button>
+
           </form>
-          <div className="nota-list">
-            {notas.map((nota, index) => (
-              <div key={index} className="nota-card p-4 mb-4 ml-5">
+        </div>
+        <div class="col-sm-12 col-lg-6">
+          {notas.map((nota, index) => (
+            <div class="card" key={index}>
+              <div class="card-body">
                 {nota.editando ? (
                   <div>
-                    <div className="form-group">
+                    <div class="form-group">
                       <label htmlFor={`titulo-${index}`}>Título</label>
                       <input
                         type="text"
-                        className="form-control"
+                        class="form-control form-control-lg"
                         id={`titulo-${index}`}
                         value={nota.titulo}
                         onChange={(event) => {
@@ -115,10 +118,10 @@ function Nota() {
                         }}
                       />
                     </div>
-                    <div className="form-group">
+                    <div class="form-group">
                       <label htmlFor={`descricao-${index}`}>Descrição</label>
                       <textarea
-                        className="form-control"
+                        class="form-control form-control-lg"
                         id={`descricao-${index}`}
                         rows="3"
                         value={nota.descricao}
@@ -129,53 +132,89 @@ function Nota() {
                         }}
                       ></textarea>
                     </div>
+                    <div class="form-group">
+                      <label htmlFor={`imagem-${index}`}>Imagem</label>
+                      <input
+                        type="file"
+                        id={`imagem-${index}`}
+                        onChange={(event) => {
+                          const novasNotas = [...notas];
+                          novasNotas[index].imagem = event.target.files[0];
+                          setNotas(novasNotas);
+                        }}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label htmlFor={`audio-${index}`}>Áudio</label>
+                      <input
+                        type="file"
+                        class="form-control-file"
+                        id={`audio-${index}`}
+                        onChange={(event) => {
+                          const novasNotas = [...notas];
+                          novasNotas[index].audio = event.target.files[0];
+                          setNotas(novasNotas);
+                        }}
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label htmlFor={`video-${index}`}>Vídeo</label>
+                      <input
+                        type="file"
+                        id={`video-${index}`}
+                        onChange={(event) => {
+                          const novasNotas = [...notas];
+                          novasNotas[index].video = event.target.files[0];
+                          setNotas(novasNotas);
+                        }}
+                      />
+                    </div>
                     <button
-                      className="btn btn-success mr-2"
-                      onClick={() => handleSave(index)}
+                      type="button"
+                      class="btn btn-primary"
+                      onClick={() => {
+                        const novasNotas = [...notas];
+                        novasNotas[index].editando = false;
+                        setNotas(novasNotas);
+                      }}
                     >
-                      <FaSave /> Salvar
+                      Salvar
                     </button>
                   </div>
                 ) : (
                   <div>
-                    <h3>{nota.titulo}</h3>
-                    <p>{nota.descricao}</p>
+                    <h5 class="card-title">{nota.titulo}</h5>
+                    <p class="card-text text-white">{nota.descricao}</p>
                     {nota.imagem && (
-                      <div className="form-group">
-                        <img src={URL.createObjectURL(nota.imagem)} alt="" />
-                      </div>
+                      <img
+                        src={URL.createObjectURL(nota.imagem)}
+                        alt={`Imagem de ${nota.titulo}`}
+                        class="img-fluid mb-2"
+                      />
                     )}
                     {nota.audio && (
-                      <div className="form-group">
-                        <audio controls>
-                          <source src={URL.createObjectURL(nota.audio)} type="audio/mp3" />
-                        </audio>
-                      </div>
+                      <audio controls>
+                        <source src={URL.createObjectURL(nota.audio)} />
+                      </audio>
                     )}
                     {nota.video && (
-                      <div className="form-group">
-                        <video controls>
-                          <source src={URL.createObjectURL(nota.video)} type="video/mp4" />
-                        </video>
-                      </div>
+                      <video controls class="mb-2">
+                        <source src={URL.createObjectURL(nota.video)} />
+                      </video>
                     )}
-                    <button
-                      className="btn btn-primary mr-2"
-                      onClick={() => handleEdit(index)}
-                    >
-                      <FaEdit /> Editar
+                    <button onClick={() => handleEdit(index)} className="btn btn-outline-primary">
+                      <FaEdit />
                     </button>
-                    <button
-                      className="btn btn-danger"
-                      onClick={() => handleDelete(index)}
-                    >
-                      <FaTrashAlt /> Excluir
+
+                    <button onClick={() => handleDelete(index)} className="btn btn-outline-danger">
+                      <FaTrashAlt />
                     </button>
+
                   </div>
                 )}
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>
