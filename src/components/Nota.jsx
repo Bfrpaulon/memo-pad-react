@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './Nota.css';
 import { FaTrashAlt, FaEdit, FaSave } from 'react-icons/fa';
-import Header from './components/Header';
 
 function Nota() {
   const [titulo, setTitulo] = useState('');
@@ -42,7 +41,6 @@ function Nota() {
 
   return (
     <div class="container">
-      <Header />
       <div class="row">
         <div class="w-2/6">
           <form className='w-80' onSubmit={handleSubmit}>
