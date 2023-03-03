@@ -10,6 +10,7 @@ function Nota() {
   const [audio, setAudio] = useState(null);
   const [video, setVideo] = useState(null);
   const [notas, setNotas] = useState([]);
+  const [pesquisa, setPesquisa] = useState('');
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -65,6 +66,17 @@ function Nota() {
                 onChange={(event) => setDescricao(event.target.value)}
               ></textarea>
             </div>
+            <div class="form-group">
+              <label htmlFor="pesquisa">Pesquisar notas</label>
+              <input
+                type="text"
+                class="form-control form-control-lg"
+                id="pesquisa"
+                value={pesquisa}
+                onChange={(event) => setPesquisa(event.target.value)}
+              />
+            </div>
+
             <div class="form-group">
               <label htmlFor="imagem">Imagem</label>
               <input
