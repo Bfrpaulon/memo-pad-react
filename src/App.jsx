@@ -1,99 +1,97 @@
 import React, { useState } from 'react';
-import { Container, Row, Col, Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
-import { FaPlus, FaSearch, FaTags, FaFilePdf } from 'react-icons/fa';
+import { Container, Row, Col } from 'reactstrap';
+import NavigationBar from './components/NavigationBar/NavigationBar';
+import SearchBar from './components/SearchBar/SearchBar';
+import NoteList from './components/ NoteList/NoteList';
+import NotePreview from './components/NotePreview/NotePreview';
+import NoteDetails from './components/NoteDetails/NoteDetails';
+import NoteForm from './components/NoteForm/NoteForm';
+import TagList from './components/TagList/TagList';
+import ImageUpload from './components/ImageUpload/ImageUpload';
+import ExportOptions from './components/ExportOptions/ExportOptions';
 
-function App() {
+const App = () => {
   const [notes, setNotes] = useState([]);
-  const [tags, setTags] = useState([]);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [filteredNotes, setFilteredNotes] = useState([]);
 
-  const handleAddNote = (note) => {
-    setNotes([...notes, note]);
+  const handleAddNote = (newNote) => {
+    setNotes([...notes, newNote]);
   };
 
-  const handleAddTag = (tag) => {
-    setTags([...tags, tag]);
+  const handleUpdateNote = (updatedNote) => {
+    const updatedNotes = notes.map((note) =>
+      note.id === updatedNote.id ? updatedNote : note
+    );
+    setNotes(updatedNotes);
+    setSelectedNote(updatedNote);
   };
 
-  const handleExportNotes = (format) => {
-    // Código para exportar notas no formato desejado
+  const handleDeleteNote = (noteId) => {
+    const filteredNotes = notes.filter((note) => note.id !== noteId);
+    setNotes(filteredNotes);
+    setSelectedNote(null);
+  };
+
+  const handleSearch = (searchQuery) => {
+    setSearchQuery(searchQuery);
+    const filteredNotes = notes.filter(
+      (note) =>
+        note.title.toLowerCase().includes(searchQuery) ||
+        note.tags.join(',').toLowerCase().includes(searchQuery)
+    );
+    setFilteredNotes(filteredNotes);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery('');
+    setFilteredNotes([]);
   };
 
   return (
-    <div>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand>Memo Pad Notes</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <NavDropdown title="Notas" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <FaPlus /> Adicionar nota
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <FaFilePdf /> Exportar notas
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
-            <Form className="d-flex">
-              <FormControl type="search" placeholder="Pesquisar notas" className="me-2" aria-label="Search" />
-              <Button variant="outline-success">
-                <FaSearch />
-              </Button>
-            </Form>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-      <Container className="mt-3">
-        <Row>
-          <Col md={3}>
-            <h5>Tags</h5>
-            <hr />
-            <Nav className="flex-column">
-              {tags.map((tag, index) => (
-                <Nav.Link key={index}>
-                  <FaTags color={index % 2 === 0 ? 'blue' : 'green'} /> {tag}
-                </Nav.Link>
-              ))}
-              <Nav.Link>
-                <FaPlus /> Adicionar tag
-              </Nav.Link>
-            </Nav>
-          </Col>
-          <Col md={9}>
-            <h5>Notas</h5>
-            <hr />
-            {notes.map((note, index) => (
-              <div key={index} className="mb-3">
-                <h6>{note.title}</h6>
-                <p>{note.content}</p>
-                {note.image && (
-                  <img src={note.image} alt="Imagem da nota" className="img-fluid rounded" />
-                )}
-                {note.link && (
-                  <a href={note.link} target="_blank" rel="noreferrer">
-                    {note.link}
-                  </a>
-                )}
-                <div>
-                  <Button variant="primary" size="sm">
-                    Editar
-                  </Button>{' '}
-                  <Button variant="danger" size="sm">
-                    Excluir
-                  </Button>
-                </div>
-                <hr />
-              </div>
-            ))}
-            <Button variant="primary" onClick={() => handleAddNote({ title: 'Nova Nota', content: '' })}>
-              Adicionar nota
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-    </div>
+    <Container>
+      <NavigationBar />
+      <Row className="my-3">
+        <Col md={8}>
+          <SearchBar
+            searchQuery={searchQuery}
+            handleSearch={handleSearch}
+            handleClearSearch={handleClearSearch}
+          />
+          {selectedNote ? (
+            <>
+              <NoteDetails
+                note={selectedNote}
+                onUpdateNote={handleUpdateNote}
+                onDeleteNote={handleDeleteNote}
+              />
+            </>
+          ) : (
+            <>
+              <NoteList
+                notes={filteredNotes.length > 0 ? filteredNotes : notes}
+                handleNoteSelect={setSelectedNote}
+              />
+              <NotePreview />
+            </>
+          )}
+        </Col>
+        <Col md={4}>
+          <NoteForm
+            onAddNote={handleAddNote}
+            onUpdateNote={handleUpdateNote}
+            selectedNote={selectedNote}
+            selectedImage={selectedImage}
+            onImageSelect={setSelectedImage}
+          />
+          <TagList />
+          <ExportOptions />
+        </Col>
+      </Row>
+    </Container>
   );
-}
+};
 
 export default App;

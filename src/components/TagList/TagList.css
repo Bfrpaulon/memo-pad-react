@@ -1,0 +1,23 @@
+/* Estilos para a lista de tags */
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    }
+    
+    /* Estilos para cada tag individual */
+    .tag {
+    background-color: #f2f2f2;
+    border-radius: 16px;
+    color: #333;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    }
+    
+    .tag:hover {
+    background-color: #ddd;
+    }
