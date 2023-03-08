@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { Container, Row, Col } from 'reactstrap';
-import NavigationBar from './components/NavigationBar/NavigationBar';
-import SearchBar from './components/SearchBar/SearchBar';
-import NoteList from './components/ NoteList/NoteList';
+import NavigationBar from './components/NavigationBar';
+import SearchBar from './components/SearchBar';
+import NoteList from './components/ NoteList';
 import NotePreview from 'src/components/NotePreview';
 import NoteDetails from './components/ NoteDetails';
-import NoteForm from './components/NoteForm/NoteForm';
-import TagList from './components/TagList/TagList';
-import ExportOptions from './components/ExportOptions/ExportOptions';
+import NoteForm from './components/NoteForm';
+import TagList from './components/TagList';
+import ExportOptions from './components/ExportOptions';
 
 const App = () => {
   const [notes, setNotes] = useState([]);
