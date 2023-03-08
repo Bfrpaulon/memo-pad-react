@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-
+import './ImageUpload.css'
 const ImageUpload = ({ onImageUpload }) => {
     const [imagePreviewUrl, setImagePreviewUrl] = useState('');
 
