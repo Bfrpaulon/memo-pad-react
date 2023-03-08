@@ -22,7 +22,7 @@ function App() {
     <div>
       <Navbar bg="light" expand="lg">
         <Container>
-          <Navbar.Brand>App de Notas</Navbar.Brand>
+          <Navbar.Brand>Memo Pad Notes</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto">
