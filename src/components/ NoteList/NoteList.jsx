@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { FaTrash, FaPencilAlt } from 'react-icons/fa';
+import { FaTrash } from 'react-icons/fa';
 import './NoteList.css'
 
 const NoteList = ({ notes, handleDelete }) => {

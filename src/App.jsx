@@ -3,11 +3,10 @@ import { Container, Row, Col } from 'reactstrap';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import SearchBar from './components/SearchBar/SearchBar';
 import NoteList from './components/ NoteList/NoteList';
-import NotePreview from './components/NotePreview/NotePreview';
-import NoteDetails from './components/NoteDetails/NoteDetails';
+import NotePreview from 'src/components/NotePreview';
+import NoteDetails from './components/ NoteDetails';
 import NoteForm from './components/NoteForm/NoteForm';
 import TagList from './components/TagList/TagList';
-import ImageUpload from './components/ImageUpload/ImageUpload';
 import ExportOptions from './components/ExportOptions/ExportOptions';
 
 const App = () => {
