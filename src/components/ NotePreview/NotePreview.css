@@ -1,0 +1,56 @@
+.note-preview {
+    display: flex;
+    flex-direction: column;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+  }
+  
+  .note-preview:hover {
+    background-color: #e9ecef;
+  }
+  
+  .note-preview h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .note-preview p {
+    margin-top: 0;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  .note-preview .note-image {
+    margin-bottom: 10px;
+  }
+  
+  .note-preview .note-image img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .note-preview .note-link {
+    margin-bottom: 10px;
+  }
+  
+  .note-preview .note-link a {
+    color: #007bff;
+    text-decoration: none;
+    word-wrap: break-word;
+  }
+  
+  .note-preview .note-tags {
+    margin-top: 10px;
+  }
+  
+  .note-preview .note-tags .badge {
+    background-color: #6c757d;
+    color: #fff;
+    margin-right: 5px;
+  }
