@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'reactstrap';
 import NavigationBar from './components/NavigationBar';
 import SearchBar from './components/SearchBar';
 import NoteList from './components/ NoteList';
-import NotePreview from 'src/components/NotePreview';
+import NotePreview from './components/ NotePreview';
 import NoteDetails from './components/ NoteDetails';
 import NoteForm from './components/NoteForm';
 import TagList from './components/TagList';
