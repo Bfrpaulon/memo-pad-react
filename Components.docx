@@ -1,0 +1,13 @@
+Explicação de cada componente:
+
+App.js: o componente principal do aplicativo que renderiza a barra de navegação, a barra de pesquisa, a lista de notas e o formulário de adição/edição de notas.
+NavigationBar.js: o componente que renderiza a barra de navegação superior com os botões de adicionar nota e exportar notas.
+SearchBar.js: o componente que renderiza a barra de pesquisa para filtrar notas por título ou tag.
+NoteList.js: o componente que renderiza a lista de notas com seus títulos, tags e pré-visualização do texto.
+NotePreview.js: o componente que renderiza a pré-visualização de uma nota com título, tags e pré-visualização do texto.
+NoteDetails.js: o componente que renderiza os detalhes de uma nota, incluindo o título, texto completo, imagem ou link, e opções de edição/exclusão.
+NoteForm.js: o componente que renderiza o formulário de adição/edição de notas, incluindo campos para título, texto, imagem ou link e seleção de tags.
+TagList.js: o componente que renderiza a lista de tags para classificar as notas.
+Tag.js: o componente que renderiza uma tag individual com sua cor correspondente.
+ImageUpload.js: o componente que permite ao usuário fazer upload de uma imagem para uma nota.
+ExportOptions.js: o componente que permite ao usuário exportar notas em diferentes formatos, como PDF ou texto simples.
