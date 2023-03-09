@@ -1,0 +1,19 @@
+.form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .form-control {
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .save-button {
+    background-color: #4db6ac;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  

@@ -1,0 +1,25 @@
+header {
+    background-color: #4db6ac;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 2rem;
+    margin: 0;
+  }
+  
+  .add-note {
+    background-color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
