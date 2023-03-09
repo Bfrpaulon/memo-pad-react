@@ -1,29 +1,29 @@
 import React from 'react';
-import { Navbar, Nav, Button } from 'react-bootstrap';
-import { FaPlus, FaFileExport } from 'react-icons/fa';
-import './NavigationBar.css'
+import { BsSearch } from 'react-icons/bs';
+import { Navbar, Container, Nav, Form } from 'react-bootstrap';
 
-const NavigationBar = ({ onAddNoteClick, onExportNotesClick }) => {
+const NavigationBar = ({ handleSearch }) => {
   return (
-    <Navbar bg="light" expand="md">
-      <Navbar.Brand href="#home">Minhas Notas</Navbar.Brand>
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
-          <Nav.Item>
-            <Button variant="primary" onClick={onAddNoteClick}>
-              <FaPlus /> Adicionar Nota
-            </Button>
-          </Nav.Item>
-        </Nav>
-        <Nav>
-          <Nav.Item>
-            <Button variant="outline-primary" onClick={onExportNotesClick}>
-              <FaFileExport /> Exportar Notas
-            </Button>
-          </Nav.Item>
-        </Nav>
-      </Navbar.Collapse>
+    <Navbar bg="light" expand="lg" className="navbar">
+      <Container>
+        <Navbar.Brand href="#home" className="navbar-brand">
+          Memo Pad
+        </Navbar.Brand>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="me-auto">
+            <Nav.Link href="#home" className="navbar-link">
+              Home
+            </Nav.Link>
+            <Nav.Link href="#all-notes" className="navbar-link">
+              All Notes
+            </Nav.Link>
+          </Nav>
+          <Form className="d-flex">
+            <SearchBar handleSearch={handleSearch} />
+          </Form>
+        </Navbar.Collapse>
+      </Container>
     </Navbar>
   );
 };

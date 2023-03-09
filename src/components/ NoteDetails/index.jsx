@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './NoteDetails.css';
 
-const NoteDetails = ({ note, handleDelete }) => {
+const NoteDetails = ({ note, handleDelete, handleUpdate }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [title, setTitle] = useState(note.title);
   const [text, setText] = useState(note.text);
@@ -122,22 +122,22 @@ const NoteDetails = ({ note, handleDelete }) => {
           )}
           <div className="note-tags">
             {note.tags.map((tag) => (
-              <span key={tag} className="badge badge-secondary mr-1          ">
+              <span key={tag} className="badge badge-secondary mr-1">
                 {tag}
               </span>
             ))}
           </div>
           <div className="note-actions">
             <button type="button" className="btn btn-outline-primary mr-2" onClick={handleEdit}>
-              <FaPencilAlt /> Edit
+              <FaPencilAlt /> Editar
             </button>
             <button type="button" className="btn btn-outline-danger" onClick={() => handleDelete(note.id)}>
-              <FaTrash /> Delete
+              <FaTrash /> Excluir
             </button>
           </div>
           <div className="note-back">
             <Link to="/" className="btn btn-outline-secondary">
-              Back to Notes
+              Voltar para Notas
             </Link>
           </div>
         </>
