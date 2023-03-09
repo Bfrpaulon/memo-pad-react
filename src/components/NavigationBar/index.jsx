@@ -1,31 +1,24 @@
 import React from 'react';
-import { BsSearch } from 'react-icons/bs';
-import { Navbar, Container, Nav, Form } from 'react-bootstrap';
+import { FaSearch, FaPlus, FaEllipsisH } from 'react-icons/fa';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './styles.css';
 
-const NavigationBar = ({ handleSearch }) => {
+function NavigationBar() {
   return (
-    <Navbar bg="light" expand="lg" className="navbar">
-      <Container>
-        <Navbar.Brand href="#home" className="navbar-brand">
-          Memo Pad
-        </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#home" className="navbar-link">
-              Home
-            </Nav.Link>
-            <Nav.Link href="#all-notes" className="navbar-link">
-              All Notes
-            </Nav.Link>
-          </Nav>
-          <Form className="d-flex">
-            <SearchBar handleSearch={handleSearch} />
-          </Form>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <nav className="navbar navbar-light bg-light">
+      <div className="container-fluid">
+        <span className="navbar-brand mb-0 h1">Memo Pad</span>
+        <form className="d-flex">
+          <input className="form-control me-2 search-bar" type="search" placeholder="Search" aria-label="Search" />
+          <button className="btn btn-outline-success search-button" type="submit"><FaSearch /></button>
+        </form>
+        <div className="nav-buttons">
+          <button type="button" className="btn btn-outline-primary add-button"><FaPlus /></button>
+          <button type="button" className="btn btn-outline-secondary options-button"><FaEllipsisH /></button>
+        </div>
+      </div>
+    </nav>
   );
-};
+}
 
 export default NavigationBar;
