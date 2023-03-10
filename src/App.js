@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Header from "./components/Header";
+import NoteList from "./components/NoteList";
+import AddNote from "./components/AddNote";
 
 function App() {
+  // aqui vamos criar um estado para guardar todas as notas
+  const [notes, setNotes] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <div className="container">
+        <div className="row">
+          <div className="col-md-8">
+            {/* aqui vamos adicionar o componente NoteList */}
+            <NoteList notes={notes} />
+          </div>
+          <div className="col-md-4">
+            {/* aqui vamos adicionar o componente AddNote */}
+            <AddNote />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
